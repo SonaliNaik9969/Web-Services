@@ -1,0 +1,45 @@
+package com.h2.resource;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.h2.entity.Employee;
+import com.h2.service.EmployeeService;
+
+@RestController
+@RequestMapping("/employee")
+public class EmployeeResource {
+	
+	@Autowired
+	private EmployeeService empService;
+	
+	@PostMapping("/save")
+	public Employee createEmployee(Employee employee)
+	{
+		return empService.createEmployee(employee);
+	}
+	
+	@GetMapping("/readAll")
+	public List<Employee> readAllEmployees()
+	{
+		return empService.readAllEmployees();
+	}
+
+	@GetMapping("/id/{id}")
+	public Employee readEmployeeById(Long id)
+	{
+		return readEmployeeById(id);
+	}
+	
+	@DeleteMapping("/id/{id}")
+	public void deleteEmployeeById(Long id)
+	{
+		empService.deleteEmployeeById(id);
+	}
+}

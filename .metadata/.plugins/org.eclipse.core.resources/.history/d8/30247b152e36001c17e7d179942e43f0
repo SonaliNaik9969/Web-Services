@@ -1,0 +1,14 @@
+package com.bookstore.service;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.bookstore.repo.BookStoreRepo;
+
+@Service
+public class BookStoreService {
+	
+	@Autowired
+	private BookStoreRepo bsRepo;
+
+}
